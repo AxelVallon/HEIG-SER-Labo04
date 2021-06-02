@@ -81,6 +81,9 @@
 									<xsl:value-of select="." />
 								</xsl:attribute>
 
+								<!-- <xsl:apply-templates select="lister_pokemon">
+									  <xsl:with-param name="filtre"><xsl:value-of select="$type"/></xsl:with-param> 
+								 </xsl:apply-templates> TODO -->
 								<!-- ##### A compléter 4 : Ici, vous devez faire appel au template lister_pokemon en lui passant le bon filtre en paramètre -->
 								
 							</div>
@@ -114,7 +117,8 @@
 
 		</html>
 
-	</xsl:template> <!-- Fin a compléter 2 -->
+	</xsl:template> <!-- Fin a compléter 2 (fait)-->
+
 	<xsl:template name="lister_pokemon">
 
 		</> <!-- ##### A compléter 6 -->
