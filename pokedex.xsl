@@ -139,19 +139,29 @@
 
 			<xsl:attribute name="generation">
 
-				<!-- ##### A compléter 10 (le plus proprement possible) étant donné les contraintes suivantes : -->
-
-				<!-- generation = "1" si l'id du pokemon est plus petit ou égal à 151 -->
-				<!-- generation = "2" si l'id du pokemon est plus petit ou égal à 251 et plus grand que 151 -->
-				<!-- generation = "3" si l'id du pokemon est plus petit ou égal à 386 et plus grand que 251 -->
-				<!-- generation = "4" si l'id du pokemon est plus petit ou égal à 493 et plus grand que 386 -->
-				<!-- generation = "5" si l'id du pokemon est plus petit ou égal à 649 et plus grand que 493 -->
-				<!-- generation = "6" si l'id du pokemon est plus petit ou égal à 721 et plus grand que 649.-->
-				<!-- generation = "7" si l'id du pokemon est plus petit ou égal à 809 et plus grand que 721-->
-				
-				<xsl:value-of select="1" /><!-- Pour l'instant tous les pokémosn sont de la génération 1, pour que vous ne soyez pas bloqué sur le reste -->
-
-				<!-- Fin A compléter 10 -->
+			<xsl:choose>
+				<xsl:when test="id &lt;= 151">
+				<xsl:value-of select="1" />
+				</xsl:when>
+				<xsl:when test="id &lt;= 251">
+				<xsl:value-of select="2" />
+				</xsl:when>
+				<xsl:when test="id &lt;= 386">
+				<xsl:value-of select="3" />
+				</xsl:when>
+				<xsl:when test="id &lt;= 493">
+				<xsl:value-of select="4" />
+				</xsl:when>
+				<xsl:when test="id &lt;= 649">
+				<xsl:value-of select="5" />
+				</xsl:when>
+				<xsl:when test="id &lt;= 721">
+				<xsl:value-of select="6" />
+				</xsl:when>
+				<xsl:when test="id &lt;= 809">
+				<xsl:value-of select="7" />
+				</xsl:when>
+				</xsl:choose>
 
 			</xsl:attribute>	
 
