@@ -81,9 +81,9 @@
 									<xsl:value-of select="." />
 								</xsl:attribute>
 
-								<!-- <xsl:apply-templates select="lister_pokemon">
-									  <xsl:with-param name="filtre"><xsl:value-of select="$type"/></xsl:with-param> 
-								 </xsl:apply-templates> TODO -->
+								 <xsl:apply-templates select="lister_pokemon">
+									  <xsl:with-param name="filtre" select="pokemon/type[text()=$type]/parent::pokemon" /> <!-- TODO améliorer mais c'est l'idée-->
+								 </xsl:apply-templates>
 								<!-- ##### A compléter 4 : Ici, vous devez faire appel au template lister_pokemon en lui passant le bon filtre en paramètre -->
 								
 							</div>
@@ -121,13 +121,15 @@
 
 	<xsl:template name="lister_pokemon">
 
-		</> <!-- ##### A compléter 6 -->
+		<!-- ##### A compléter 6 (fait dessous) -->
+		<xsl:param name="filtre" />
 
 		<div class="row">
 
 			<xsl:for-each select="$filtre">
 
-				</> <!-- ##### A compléter 7 : Vous devez trier les pokemons par la valeur numérique de leur ID -->
+				<xsl:sort select="id" data-type="number"/>
+				 <!-- ##### A compléter 7 : Vous devez trier les pokemons par la valeur numérique de leur ID -->
 				<xsl:apply-templates select="." />
 
 			</xsl:for-each>
@@ -189,17 +191,18 @@
 	</xsl:template>
 
 	<xsl:template match="id">
-
-		<img width="100%"
-
-			</> <!-- ##### A compléter 8 : Ici, vous devez étudier le dossier images et vous trouverez facilement l'objectif de ce que vous devez faire ici. Indice : Vous devez utiliser une ou plusieurs 	               fonctions de  XSLT-->
-
+	
+		<xsl:variable name="id_selected" select='.' />
+		<img width="100%" 
+			
+			<xsl:value-of select="concat('src=', format-number($id_selected, '000'), '.jpg>')"/> <!-- ##### A compléter 8 : Ici, vous devez étudier le dossier images et vous trouverez facilement l'objectif de ce que vous devez faire ici. Indice : Vous devez utiliser une ou plusieurs 	               fonctions de  XSLT-->
+				<!-- TODO : https://www.w3schools.com/xml/func_formatnumber.asp-->
 				<!-- NB : La sources d'images utilisées provient de :  https://github.com/fanzeyi/pokemon.json    -->
 		</img>
 
 	</xsl:template>
 
-	<> <!-- ##### A compléter 9 -->
+	<xsl:template match="base"> <!-- ##### A compléter 9 (fait comme dessus)-->
 
 		<table class="table table-stripped">
 			
@@ -226,5 +229,5 @@
 
 		</table>
 
-	<> <!-- Fin à compléter 9 -->
+	</xsl:template> <!-- Fin à compléter 9 -->
 </xsl:stylesheet>
