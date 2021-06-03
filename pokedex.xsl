@@ -76,16 +76,15 @@
 							<xsl:variable name="type" select="." />
 
 							<div data-parent="#accordion" class="collapse">
-
+								
 								<xsl:attribute name="id">
 									<xsl:value-of select="." />
 								</xsl:attribute>
-
-								 <xsl:apply-templates select="lister_pokemon">
-									  <xsl:with-param name="filtre" select="pokemon/type[text()=$type]/parent::pokemon" /> <!-- TODO améliorer mais c'est l'idée-->
-								 </xsl:apply-templates>
-								<!-- ##### A compléter 4 : Ici, vous devez faire appel au template lister_pokemon en lui passant le bon filtre en paramètre -->
 								
+								<xsl:call-template name="lister_pokemon">
+									<xsl:with-param name="filtre" select="/pokedex/pokemon/type[text()=$type]/parent::pokemon" /> <!-- TODO améliorer mais c'est l'idée-->
+								</xsl:call-template>
+								<!-- ##### A compléter 4 : Ici, vous devez faire appel au template lister_pokemon en lui passant le bon filtre en paramètre -->
 							</div>
 						</xsl:for-each>
 
@@ -120,18 +119,14 @@
 	</xsl:template> <!-- Fin a compléter 2 (fait)-->
 
 	<xsl:template name="lister_pokemon">
-
 		<!-- ##### A compléter 6 (fait dessous) -->
 		<xsl:param name="filtre" />
-
+		
 		<div class="row">
-
 			<xsl:for-each select="$filtre">
-
-				<xsl:sort select="id" data-type="number"/>
-				 <!-- ##### A compléter 7 : Vous devez trier les pokemons par la valeur numérique de leur ID -->
+				<xsl:sort select="id" data-type="number"/> 
+				<!-- ##### A compléter 7 : Vous devez trier les pokemons par la valeur numérique de leur ID -->
 				<xsl:apply-templates select="." />
-
 			</xsl:for-each>
 
 		</div>
@@ -192,12 +187,13 @@
 
 	<xsl:template match="id">
 		<xsl:variable name="id_selected" select='.'/>
-		<!--<img width="100%" -->
+		<img width="100%" >
 			
-			<xsl:value-of select="concat('src=', format-number($id_selected, '000'), '.jpg>')"/> <!-- ##### A compléter 8 : Ici, vous devez étudier le dossier images et vous trouverez facilement l'objectif de ce que vous devez faire ici. Indice : Vous devez utiliser une ou plusieurs 	               fonctions de  XSLT-->
+			<xsl:attribute name="src">./images/<xsl:value-of select="format-number($id_selected, '000')"/>.png</xsl:attribute>
+		    <!-- ##### A compléter 8 : Ici, vous devez étudier le dossier images et vous trouverez facilement l'objectif de ce que vous devez faire ici. Indice : Vous devez utiliser une ou plusieurs 	               fonctions de  XSLT-->
 				<!-- TODO : https://www.w3schools.com/xml/func_formatnumber.asp-->
-				<!-- NB : La sources d'images utilisées provient de :  https://github.com/fanzeyi/pokemon.json    -->
-		<!--</img>-->
+				<!-- NB : La sources d'images utilisées provient de :  https://github.com/fanzeyi/pokemon.json  -->
+		</img>
 
 	</xsl:template>
 
