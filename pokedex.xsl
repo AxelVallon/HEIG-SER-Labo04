@@ -153,12 +153,12 @@
 				<!-- generation = "5" si l'id du pokemon est plus petit ou égal à 649 et plus grand que 493 -->
 				<!-- generation = "6" si l'id du pokemon est plus petit ou égal à 721 et plus grand que 649.-->
 				<!-- generation = "7" si l'id du pokemon est plus petit ou égal à 809 et plus grand que 721-->
-
-				<xsl:value-of select="1"><!-- Pour l'instant tous les pokémosn sont de la génération 1, pour que vous ne soyez pas bloqué sur le reste -->
+				
+				<xsl:value-of select="1" /><!-- Pour l'instant tous les pokémosn sont de la génération 1, pour que vous ne soyez pas bloqué sur le reste -->
 
 				<!-- Fin A compléter 10 -->
 
-			</xsl:attribute>
+			</xsl:attribute>	
 
 			<div class="card">
 
@@ -191,14 +191,13 @@
 	</xsl:template>
 
 	<xsl:template match="id">
-	
-		<xsl:variable name="id_selected" select='.' />
-		<img width="100%" 
+		<xsl:variable name="id_selected" select='.'/>
+		<!--<img width="100%" -->
 			
 			<xsl:value-of select="concat('src=', format-number($id_selected, '000'), '.jpg>')"/> <!-- ##### A compléter 8 : Ici, vous devez étudier le dossier images et vous trouverez facilement l'objectif de ce que vous devez faire ici. Indice : Vous devez utiliser une ou plusieurs 	               fonctions de  XSLT-->
 				<!-- TODO : https://www.w3schools.com/xml/func_formatnumber.asp-->
 				<!-- NB : La sources d'images utilisées provient de :  https://github.com/fanzeyi/pokemon.json    -->
-		</img>
+		<!--</img>-->
 
 	</xsl:template>
 
