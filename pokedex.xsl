@@ -76,7 +76,7 @@
 								</xsl:attribute>
 								
 								<xsl:call-template name="lister_pokemon">
-									<xsl:with-param name="filtre" select="/pokedex/pokemon/type[text()=$type]/parent::pokemon" /> <!-- TODO améliorer mais c'est l'idée-->
+									<xsl:with-param name="filtre" select="/pokedex/pokemon/type[text()=$type]/parent::pokemon" />
 								</xsl:call-template>
 
 							</div>
